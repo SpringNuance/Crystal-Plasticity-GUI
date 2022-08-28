@@ -1,0 +1,189 @@
+login as: nguyenb5
+nguyenb5@puhti.csc.fi's password:
+Last login: Tue Aug  9 23:30:36 2022 from dzc096yjvbplpjxw-by6t-3.rev.dnainternet.fi
+┌─ Welcome ───────────────────────────────────────────────────────────────────┐
+│         CSC - Tieteen tietotekniikan keskus - IT Center for Science         │
+│            ____        __    __  _                                          │
+│           / __ \__  __/ /_  / /_(_)   - -  -   -                            │
+│          / /_/ / / / / __ \/ __/ /   - -  -   -                             │
+│         / ____/ /_/ / / / / /_/ /   - -  -   -                              │
+│        /_/    \__,_/_/ /_/\__/_/   - -  -   -                               │
+│                                                                             │
+│      Puhti.csc.fi - Atos BullSequana X400 - 682 CPU nodes - 80 GPU nodes    │
+├─ Contact ───────────────────────────────────────────────────────────────────┤
+│ Servicedesk : 09-457 2821, servicedesk@csc.fi   Switchboard : 09-457 2001   │
+├─ User Guide ────────────────────────────────────────────────────────────────┤
+│ https://docs.csc.fi                                                         │
+├─ Manage my account ─────────────────────────────────────────────────────────┤
+│ https://my.csc.fi/                                                          │
+├─ Billing ───────────────────────────────────────────────────────────────────┤
+│ Billing has changed significantly from Sisu/Taito. CPU, GPU, Memory, local  │
+│ disk and lustre scratch space are all billed. See for details:              │
+│ https://docs.csc.fi/accounts/billing/                                       │
+├─ Software ──────────────────────────────────────────────────────────────────┤
+│ Available modules can be listed with command: module avail and module spider│
+├─ Main Partitions ───────────────────────────────────────────────────────────┤
+│   small       : 1-40 cores    3 days max runtime                            │
+│   large       : 2-1040 cores  3 days max runtime                            │
+│   hugemem     : 1-160 cores   3 days max runtime                            │
+│   longrun     : 1-40 cores   14 days max runtime                            │
+│   gpu         : 1-80 GPUs     3 days max runtime                            │
+│                                                                             │
+│ See https://docs.csc.fi/computing/running/batch-job-partitions/             │
+├─ Storage ───────────────────────────────────────────────────────────────────┤
+│ In Puhti there are three main disk areas:                                   │
+│   home     Personal home folder                                             │
+│   projappl Per project folder where applications and libraries can be stored│
+│   scratch  Per project folder for running jobs. Files are removed           │
+│            after 90 days (not yet activated).                               │
+│                                                                             │
+│ Run csc-workspaces to see your folders and quotas                           │
+│ See https://docs.csc.fi/computing/disk/ for details                         │
+├─ News ──────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  2019-11-25: 90-day /scratch cleaning is not active yet, we'll inform       │
+│              users later with more detailed information when it's activated.│
+│                                                                             │
+│  2020-11-19: Puhti outgoing internet traffic is coming from new addresses,  │
+│              puhti-nat-1.csc.fi and puhti-nat-2.csc.fi                      │
+│                                                                             │
+│  2021-10-13: Limits of the interactive partition have been increased.       │
+│              Max two jobs, 8 cores, 76 GiB memory and 720 GiB of NVMe.      │
+│                                                                             │
+│  2021-10-18: An easy-to-use web interface for Puhti is now open for beta    │
+│              test use at https://www.puhti.csc.fi. User documentation at    │
+│              https://docs.csc.fi/computing/webinterface                     │
+│                                                                             │
+│  2022-06-28: Fast NVMe drives has been added to multiple node types, it can │
+│              improve IO-intensive job performance a lot.                    │
+│              https://docs.csc.fi/support/whats-new/                         │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+cd /scratch/project_2004956/Binh/PH3BayesLargeRVE
+source damask_py/bin/activate
+python optimize.py[nguyenb5@puhti-login1 ~]$ cd /scratch/project_2004956/Binh/PH3BayesLargeRVE
+[nguyenb5@puhti-login1 PH3BayesLargeRVE]$ source damask_py/bin/activate
+(damask_py) [nguyenb5@puhti-login1 PH3BayesLargeRVE]$ python optimize.py
+
+Welcome to Crystal Plasticity Parameter Calibration
+
+The configurations you have chosen:
+
+Material under study: RVE_1_40_D
+
+CP Law: phenomenological law
+
+The target curve: PH3
+
+Number of fitting parameters in PH law: 4
+
+Range and step of parameters:
+{'alpha': {'low': 0.1, 'high': 0.9, 'step': 0.1}, 'h0': {'low': 500, 'high': 1500, 'step': 50}, 'tau0': {'low': 10, 'high': 50, 'step': 1}, 'taucs': {'low': 20, 'high': 300, 'step': 1}}
+
+Default values of hardening parameters for yield stress optimization:
+{'alpha': 0.5, 'h0': 800, 'taucs': 200}
+
+Number of initial simulations: 30
+
+Chosen optimization algorithm: BA
+
+The optimization process is auto
+
+The true and predict yield stress deviation percentage is: 2% and 10%
+
+The true and predict hardening deviation percentage is 5% and 25%
+
+The weights of w1, w2, w3, w4 of hardening objective functions are:
+{'w1': 0.9, 'w2': 0.025, 'w3': 0.05, 'w4': 0.025}
+
+The optimization process is auto
+
+The path to your main project folder is:
+/scratch/project_2004956/Binh/PH3BayesLargeRVE
+--------------------------------
+Stage 1: Running initial simulations/Loading progress and preparing data
+30 initial simulations completed.
+No additional simulations completed.
+Experimental and simulated curves preparation completed
+--------------------------------
+Stage 2: Initialize and train the RSM (MLP) with the initial data
+Fitting response surface method (multilayer perceptron)...
+Input layer size is: 4
+Output layer size is: 28
+Hidden layer size is: [16, 20]
+MLP training finished
+--------------------------------
+Stage 3: Optimize the yield stress parameters with Bayesian algorithm
+{'tau0': (10, 50)}
+The experimental yield stress is:  79.14993330122302 MPa
+The simulated yield stress should lie in the range of (77.56693463519855, 80.73293196724748) MPa
+Maximum deviation: 1.5829986660244604 MPa
+#### Iteration 30 ####
+The initial candidate partial result:
+{'alpha': 0.5, 'h0': 350, 'tau0': 10, 'taucs': 237}
+The initial candidate simulated yield stress:
+28.29988812197012
+#### Iteration 31 ####
+Parameters of the best partial solution : {'alpha': 0.5, 'h0': 800, 'tau0': 30, 'taucs': 200}
+Fitness value of the best solution = 1.169225457379652
+Fitness given by the MLP estimate: 0.8552670433990527
+Submitted batch job 12703098
+path2txt is: ./simulations_RVE_1_40_D/PH3_BA/31/postProc/
+files is:
+['RVE_1_40_D_tensionX.txt']
+The simulated yield stress: 79.52907125519648 MPa
+--------------------------------
+Yield stress parameters optimization completed
+The partial parameter solution is:
+{'alpha': 0.5, 'h0': 800, 'tau0': 30, 'taucs': 200}
+Succeeded iteration: 31
+--------------------------------
+Stage 4: Optimize the hardening parameters with Bayesian algorithm
+The partial result and also initial candidate full result:
+{'alpha': 0.5, 'h0': 800, 'tau0': 30, 'taucs': 200}
+#### Iteration 32 ####
+Parameters of the best full solution : {'alpha': 0.4, 'h0': 750, 'tau0': 30, 'taucs': 89}
+Fitness value of the best solution = 22.890714678346914
+Fitness given by the MLP estimate: 0.04368583567842611
+Submitted batch job 12706835
+path2txt is: ./simulations_RVE_1_40_D/PH3_BA/32/postProc/
+files is:
+['RVE_1_40_D_tensionX.txt']
+RMSE LOSS = 3.7002143369275
+#### Iteration 33 ####
+Parameters of the best full solution : {'alpha': 0.4, 'h0': 750, 'tau0': 30, 'taucs': 91}
+Fitness value of the best solution = 40.1225173203107
+Fitness given by the MLP estimate: 0.024923660497587548
+Submitted batch job 12709249
+path2txt is: ./simulations_RVE_1_40_D/PH3_BA/33/postProc/
+files is:
+['RVE_1_40_D_tensionX.txt']
+RMSE LOSS = 5.4019884072548825
+#### Iteration 34 ####
+Parameters of the best full solution : {'alpha': 0.3, 'h0': 800, 'tau0': 30, 'taucs': 91}
+Fitness value of the best solution = 44.97108167392042
+Fitness given by the MLP estimate: 0.022236512060147283
+Submitted batch job 12709439
+path2txt is: ./simulations_RVE_1_40_D/PH3_BA/34/postProc/
+files is:
+['RVE_1_40_D_tensionX.txt']
+RMSE LOSS = 8.480462950763354
+#### Iteration 35 ####
+Parameters of the best full solution : {'alpha': 0.4, 'h0': 700, 'tau0': 30, 'taucs': 88}
+Fitness value of the best solution = 30.00623829651562
+Fitness given by the MLP estimate: 0.03332640333380682
+Submitted batch job 12709601
+path2txt is: ./simulations_RVE_1_40_D/PH3_BA/35/postProc/
+files is:
+['RVE_1_40_D_tensionX.txt']
+RMSE LOSS = 3.338776256805216
+--------------------------------
+Hardening parameters optimization completed
+The full parameter solution is:
+{'alpha': 0.4, 'h0': 700, 'tau0': 30, 'taucs': 88}
+Succeeded iteration: 35
+--------------------------------
+Stage 5: CP Parameter Calibration completed
+The final parameter solution is:
+{'alpha': 0.4, 'h0': 700, 'tau0': 30, 'taucs': 88}
